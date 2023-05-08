@@ -43,7 +43,7 @@ export class StudentManager {
        let name=readlineSync.question("input Student Name")
        let index =StudentManager.findStudentByName(name)
        if(index!==-1){
-           return StudentManager.StudentList[index]
+           console.table(StudentManager.StudentList[index])
        }else {
            console.log(`Không tồn tại sinh viên này`)
        }
