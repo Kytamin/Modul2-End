@@ -50,18 +50,22 @@ export class StudentManager {
     }
     static fixInfoStudent():void{
        let id=readlineSync.question("input id Student")
+        let index=StudentManager.findStudentByID(+id)
         if(StudentManager.findStudentByID(+id)===-1){
             console.log(`Không tồn tại sinh viên này`)
             return
         }
         let name=readlineSync.question("input new name")
         let classroom=readlineSync.question("input new classroom")
-        let address=readlineSync.question("input new classroom")
-        let point=+readlineSync.question("input new classroom")
-        let favorite=readlineSync.question("input new classroom")
-
-
-    }
+        let address=readlineSync.question("input new address")
+        let point=+readlineSync.question("input new Point")
+        let favorite=readlineSync.question("input new favorite")
+        StudentManager.StudentList[index].setName(name)
+        StudentManager.StudentList[index].setClassroom(classroom)
+        StudentManager.StudentList[index].setAddress(address)
+        StudentManager.StudentList[index].setPoint(point)
+        StudentManager.StudentList[index].setFavorite(favorite)
+   }
     static deleteStudent():void{
        let studentId=readlineSync.question("inputId")
         let index=StudentManager.findStudentByID(+studentId)
@@ -71,7 +75,5 @@ export class StudentManager {
             StudentManager.StudentList.splice(index,1)
             console.log(`Xóa thành công`)
         }
-
-
    }
 }
